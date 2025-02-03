@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Paths } from "../enum";
 import clsx from "clsx";
+import { useCount } from "../contexts/CountContext";
 interface Question {
   question: string;
   answers: string[];
@@ -13,6 +14,7 @@ interface Question {
 
 const Form = () => {
   const { id } = useParams();
+  const { setCount } = useCount();
   const navigate = useNavigate();
   const numberId = parseInt(id!);
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
@@ -29,9 +31,10 @@ const Form = () => {
     }
 
     // If there are still questions
-    if (id && QUESTIONS.length > numberId + 1)
+    setCount( numberId + 1)
+    if (id && QUESTIONS.length > numberId + 1) {
       navigate(`${Paths.FORM}/${numberId + 1}`);
-    else navigate(Paths.COMPLETION);
+    } else navigate(Paths.COMPLETION);
   };
 
   return (
@@ -51,6 +54,7 @@ const Form = () => {
           <section className="flex flex-col gap-6">
             {currentQuestion?.answers?.map((answer, index) => (
               <button
+                key={index}
                 onClick={() => handleButton(index + 1)}
                 disabled={wrongAnswers.includes(index + 1)}
                 className={clsx(
