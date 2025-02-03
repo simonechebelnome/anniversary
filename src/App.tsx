@@ -1,9 +1,10 @@
 import MainLayout from "./components/MainLayout";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
     <MainLayout>
-      <div>Cocco bio</div>
+      <Dashboard />
     </MainLayout>
   );
 }
