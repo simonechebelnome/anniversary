@@ -1,7 +1,7 @@
 import EMBLEM from "../assets/emblem.jpg";
 import POOP from '../assets/poop.png'
 import { useCount } from "../contexts/CountContext";
-import { useLinkClickHandler, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Paths } from "../enum";
 
 interface MainLayoutProps {
