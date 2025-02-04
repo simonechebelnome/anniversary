@@ -30,4 +30,12 @@ export const routes: RouteObject[] = [
       </MainLayout>
     ),
   },
+  {
+    path: '*',
+    element: (
+      <MainLayout>
+      <Dashboard />
+    </MainLayout>
+    )
+  }
 ];
